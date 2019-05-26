@@ -4,11 +4,13 @@ public class Car {
     int maxSpeed = 100;
     int minSpeed = 0;
     int numberOfPeopleInCar = 1;
+    int maxNumberOfPeople = 6;
 
     double weight = 4079;
     double maxFuel = 16;
     double currentFuel;
     double mpg = 26.4;
+
 
 
     boolean isTheCarOn = false;
@@ -23,12 +25,42 @@ public class Car {
         isTheCarOn = customIsTheCarOn;
     }
 
+    public Car() {
+
+    }
+
     public void getIn(){
-        numberOfPeopleInCar++;
+        if(numberOfPeopleInCar < maxNumberOfPeople){
+            numberOfPeopleInCar++;
+            System.out.println("Someone got in");
+        } else{
+            System.out.println("The car is full! " + numberOfPeopleInCar + " = " + maxNumberOfPeople);
+        }
+
     }
 
     public void getOut(){
-        numberOfPeopleInCar--;
+        //Check if there are people in the car
+        if(numberOfPeopleInCar > 0) {
+            numberOfPeopleInCar--;
+        } else{
+            System.out.println("No one is in the Car " + numberOfPeopleInCar);
+        }
+    }
+
+    public double maxMilesPerFillUP(){
+        return maxFuel * mpg;
+    }
+
+    public void turnTheCarOn(){
+        // if the car isnt on
+        if(!isTheCarOn){
+            //Turn the car on
+            isTheCarOn = true;
+        }else{
+            //Otherwise print out the error
+            System.out.println("The car is already on " + isTheCarOn);
+        }
     }
 
 
